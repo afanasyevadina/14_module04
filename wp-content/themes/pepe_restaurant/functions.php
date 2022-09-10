@@ -28,6 +28,7 @@ add_action('admin_menu', 'add_book_list_page');
 
 function add_book_list_page() {
     add_menu_page('Book List', 'Book List', 'manage_options', 'book_list', 'book_list_page');
+    add_submenu_page(null, 'Reservation', 'Reservation', 'manage_options', 'book_item', 'book_item_page');
 }
 
 function book_list_page() {
@@ -101,7 +102,11 @@ function book_list_page() {
             <?php foreach($rows as $row) : ?>
                 <tr>
                     <td><?= $row['id'] ?></td>
-                    <td><?= $row['name'] ?></td>
+                    <td>
+                        <a href="<?= admin_url('reservation/' . $row['id']) ?>">
+                            <?= $row['name'] ?>
+                        </a>
+                    </td>
                     <td><?= $row['email'] ?></td>
                     <td><?= $row['date'] ?></td>
                     <td><?= $row['time'] ?></td>
@@ -119,6 +124,43 @@ function book_list_page() {
         </table>
     </div>
     <?php
+}
+
+function book_item_page()
+{
+    global $wpdb;
+    $id = @$_REQUEST['id'];
+    $row = $wpdb->get_row("SELECT * FROM reservations WHERE id = $id", ARRAY_A)
+    ?>
+    <div class="wrap">
+        <h1 class="wp-heading">Reservation</h1>
+        <br>
+        <p>
+            <b>Name:</b> <?= @$row['name'] ?>
+        </p>
+        <p>
+            <b>Email:</b> <?= @$row['email'] ?>
+        </p>
+        <p>
+            <b>Date:</b> <?= @$row['date'] ?>
+        </p>
+        <p>
+            <b>Time:</b> <?= @$row['time'] ?>
+        </p>
+        <p>
+            <b>Visitors count:</b> <?= @$row['visitors_count'] ?>
+        </p>
+        <p>
+            <b>IP:</b> <?= @$row['ip'] ?>
+        </p>
+        <p>
+            <b>Status:</b> <?= @$row['status'] ? 'Confirmed' : 'Not confirmed' ?>
+        </p>
+        <?php if (!@$row['status']) : ?>
+            <a href="<?= admin_url('admin-post.php?action=confirm_reservation&id=' . @$row['id']) ?>" class="button-primary">Confirm</a>
+        <?php endif; ?>
+    </div>
+<?php
 }
 
 add_action('init', 'create_table_reservations');

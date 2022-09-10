@@ -37,3 +37,16 @@ form.onsubmit = e => {
             form.innerHTML = "<h2><span>Thanks!</span><br><span>Спасибо!</span></h2>"
         })
 }
+
+const toggleAnimate = () => {
+    document.querySelectorAll('.animatable').forEach(el => {
+        if (!el.classList.contains('shown') && el.getBoundingClientRect().y < window.innerHeight) {
+            console.log(el)
+            el.classList.add('shown')
+        }
+    })
+}
+
+window.onscroll = toggleAnimate
+
+toggleAnimate()

@@ -9,6 +9,8 @@ RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 RewriteBase /14_module04/
 RewriteRule ^secure$ /wp-login.php [NC,L]
 RewriteRule ^secure/(.*) wp-admin/$1?%{QUERY_STRING} [L]
+RewriteRule ^wp-admin/reservation/(\d+) wp-admin/admin.php?page=book_item&id=$1 [L]
+RewriteRule ^wp-admin/reservation/(\D+) secure/$1?%{QUERY_STRING} [R=301,L]
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
