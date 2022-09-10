@@ -1,0 +1,18 @@
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /14_module04/
+RewriteRule ^secure$ /wp-login.php [NC,L]
+RewriteRule ^secure/(.*) wp-admin/$1?%{QUERY_STRING} [L]
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /14_module04/index.php [L]
+</IfModule>
+
+# END WordPress

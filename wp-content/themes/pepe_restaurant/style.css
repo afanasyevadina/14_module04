@@ -1,0 +1,247 @@
+/*
+Theme Name: Pepe’s Restaurant
+Template: blankslate
+ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #1b1b1b;
+    font-family: Garamond, Constantia, serif;
+    color: #FFFFFF;
+    font-size: 1.25rem;
+}
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: #1b1b1b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+}
+.logo {
+    height: 120px;
+}
+nav a {
+    color: #FFFFFF;
+    text-decoration-color: #b69b49;
+    transition: .4s;
+}
+nav a:hover {
+    color: #b69b49;
+}
+header {
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@keyframes fade {
+    100% {
+        opacity: 0;
+    }
+}
+header::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    background: #1b1b1b;
+    animation: fade 1s ease-in forwards;
+}
+header h1 {
+    padding: 50px;
+    background: #1b1b1b;
+    font-size: 4rem;
+    position: relative;
+    text-align: center;
+}
+h1:first-letter, h1 span:first-letter, h2:first-letter, h2 span:first-letter {
+    color: #b69b49;
+}
+h1 span, h2 span {
+    display: inline-block;
+}
+@keyframes grow {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+header h1::before {
+    content: '';
+    border-top: 7px double #b69b49;
+    position: absolute;
+    top: 25px;
+    left: 50px;
+    right: 50px;
+    animation: grow .75s ease-in-out backwards;
+}
+header h1::after {
+    content: '';
+    border-top: 7px double #b69b49;
+    position: absolute;
+    bottom: 25px;
+    left: 50px;
+    right: 50px;
+    animation: grow .75s .5s ease-in-out backwards;
+}
+h2 {
+    margin-bottom: 2.5rem;
+    font-size: 3.5rem;
+}
+.container {
+    padding: 4rem 5vw;
+}
+article {
+    padding-left: 2rem;
+    border-left: 7px double #b69b49;
+    margin-bottom: 4rem;
+    font-size: 1.75rem;
+}
+html[lang] {
+    margin-top: 0 !important;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2rem;
+}
+.grid img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+.grid > div:first-child {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+.grid > div:last-child {
+    grid-row: 3 / 5;
+    grid-column: 3 / 4;
+}
+#reservation {
+    padding-top: 4.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    grid-gap: 2.5rem;
+}
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+form div {
+    margin-bottom: 2rem;
+}
+form label {
+    font-size: 1rem;
+    color: #b69b49;
+}
+form input {
+    background: transparent;
+    font-family: Garamond, Constantia, serif;
+    color: #FFFFFF;
+    font-size: 1.25rem;
+    padding: .5rem 0;
+    border: 0;
+    border-bottom: 2px solid #FFFFFF;
+    display: block;
+    width: 100%;
+    outline: none;
+    transition: .4s;
+}
+form input:focus {
+    border-color: #b69b49;
+}
+form.validated input:invalid {
+    border-color: #bf4e4e;
+}
+form button {
+    outline: none;
+    border: none;
+    background: #b69b49;
+    font-family: Garamond, Constantia, serif;
+    color: #1b1b1b;
+    font-size: 1.25rem;
+    width: 100%;
+    padding: .75rem 0;
+    font-weight: bold;
+    cursor: pointer;
+}
+footer {
+    border-top: 1px solid #b69b49;
+    text-align: center;
+    padding-bottom: 3rem;
+}
+.alert {
+    color: #bf4e4e;
+}
+.alert:not(:empty) {
+    margin-bottom: 1rem;
+}
+@media (max-width: 770px) {
+    #reservation {
+        grid-template-columns: 1fr;
+    }
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+    }
+    .grid > div:first-child {
+        grid-column: 1 / 3;
+        grid-row: 1 / 3;
+    }
+    .grid > div:last-child {
+        grid-row: 5 / 7;
+        grid-column: 1 / 3;
+    }
+    form {
+        max-width: unset;
+    }
+    article {
+        font-size: 1.25rem;
+    }
+    h2 {
+        font-size: 3rem;
+    }
+}
+@media (max-width: 325px) {
+    .grid {
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+    }
+    .grid > div:first-child, .grid > div:last-child {
+        grid-column: unset;
+        grid-row: unset;
+    }
+    body {
+        font-size: 1.15rem;
+    }
+    header h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 2.75rem;
+    }
+    article {
+        padding-left: 1.5rem;
+    }
+    .logo {
+        height: 80px;
+    }
+    #reservation {
+        grid-gap: 0;
+    }
+}
