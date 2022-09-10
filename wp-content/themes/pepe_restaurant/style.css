@@ -12,6 +12,7 @@ body {
     font-family: Garamond, Constantia, serif;
     color: #FFFFFF;
     font-size: 1.25rem;
+    letter-spacing: .1rem;
 }
 nav {
     position: fixed;
@@ -28,12 +29,14 @@ nav {
 .logo {
     height: 120px;
 }
-nav a {
+nav a.link {
     color: #FFFFFF;
-    text-decoration-color: #b69b49;
     transition: .4s;
+    padding: .5rem .75rem;
+    border: 2px solid #b69b49;
+    text-decoration: none;
 }
-nav a:hover {
+nav a.link:hover {
     color: #b69b49;
 }
 header {
@@ -56,7 +59,7 @@ header::before {
     bottom: 0;
     content: '';
     background: #1b1b1b;
-    animation: fade 1s ease-in forwards;
+    animation: fade 1.5s ease forwards;
 }
 header h1 {
     padding: 50px;
@@ -160,6 +163,7 @@ form label {
 form input {
     background: transparent;
     font-family: Garamond, Constantia, serif;
+    letter-spacing: .1rem;
     color: #FFFFFF;
     font-size: 1.25rem;
     padding: .5rem 0;
@@ -181,6 +185,7 @@ form button {
     border: none;
     background: #b69b49;
     font-family: Garamond, Constantia, serif;
+    letter-spacing: .1rem;
     color: #1b1b1b;
     font-size: 1.25rem;
     width: 100%;
@@ -195,7 +200,10 @@ form button:hover {
 footer {
     border-top: 1px solid #b69b49;
     text-align: center;
-    padding-bottom: 3rem;
+    padding: 2rem 5vw 2rem 5vw;
+}
+footer p:first-child {
+    margin-bottom: 1rem;
 }
 .alert {
     color: #bf4e4e;
@@ -208,6 +216,11 @@ footer {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 1rem;
     margin-bottom: 0;
+}
+.form-grid div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 @keyframes appear {
     0% {
@@ -238,7 +251,7 @@ footer {
 }
 @media (max-width: 770px) {
     #reservation {
-        grid-template-columns: 1fr;
+        display: block;
     }
     .grid {
         grid-template-columns: repeat(2, 1fr);
@@ -285,8 +298,5 @@ footer {
     }
     .logo {
         height: 80px;
-    }
-    #reservation {
-        grid-gap: 0;
     }
 }

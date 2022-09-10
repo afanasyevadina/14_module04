@@ -12,7 +12,7 @@
         <a href="<?= site_url() ?>">
             <img src="<?= get_stylesheet_directory_uri() ?>/logo.png" alt="" class="logo">
         </a>
-        <a href="#reservation">RESERVATION</a>
+        <a href="#reservation" class="link">RESERVATION</a>
     </nav>
     <header style="background-image: url('<?= get_the_post_thumbnail_url() ?>')">
         <h1>
